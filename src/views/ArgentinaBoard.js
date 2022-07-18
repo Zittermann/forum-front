@@ -5,11 +5,12 @@ import ThreadComp from "../components/ThreadComp";
 
 function ArgentinaBoard() {
 
+    const idBoard = 2
     const [threads, setThreads] = useState([])
 
     useEffect(() => {
         getThreads()
-    }, [])
+    })
 
     const url = 'http://127.0.0.1:8000/api/threads'
 
@@ -25,12 +26,12 @@ function ArgentinaBoard() {
         <div className={"container"}>
 
             <h1>WELCOME TO THE ARGENTINIAN BOARD</h1>
-            <ThreadForm />
+            <ThreadForm board={idBoard} />
 
             <div className={"threads-list"}>
                 {
                     threads.map((thread, index) => {
-                        if (thread.board === 2) {
+                        if (thread.board === idBoard) {
                             return(
                                 <ThreadComp key={index} thread={thread} />
                             )

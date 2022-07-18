@@ -4,11 +4,12 @@ import ThreadComp from "../components/ThreadComp";
 
 function TechBoard() {
 
+    const idBoard = 1
     const [threads, setThreads] = useState([])
 
     useEffect(() => {
         getThreads()
-    }, [])
+    })
 
     const url = 'http://127.0.0.1:8000/api/threads'
 
@@ -23,12 +24,12 @@ function TechBoard() {
     return(
         <div className={"container"}>
             <h1>WELCOME TO TECH BOARD</h1>
-            <ThreadForm />
+            <ThreadForm board={idBoard} />
 
             <div className={"threads-list"}>
                 {
                     threads.map((thread, index) => {
-                        if (thread.board === 1) {
+                        if (thread.board === idBoard) {
                             return (
                                 <ThreadComp key={index} thread={thread} />
                             )
